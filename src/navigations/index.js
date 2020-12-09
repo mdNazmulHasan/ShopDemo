@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
-import LoadingScreen from '../screens/LoadingScreen';
+import Loading from '../screens/Loading';
 const Stack = createStackNavigator();
 const headerOption = {
   gestureEnabled: false,
@@ -10,11 +10,7 @@ const headerOption = {
 function RootNavigator() {
   return (
     <Stack.Navigator>
-      <Stack.Screen
-        name="LoadingScreen"
-        component={LoadingScreen}
-        options={headerOption}
-      />
+      <Stack.Screen name="Loading" component={Loading} options={headerOption} />
     </Stack.Navigator>
   );
 }

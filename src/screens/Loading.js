@@ -2,7 +2,7 @@ import React from 'react';
 import {Image, StyleSheet, View} from 'react-native';
 import cart from '../../assets/carts.png';
 
-const LoadingScreen = () => {
+const Loading = () => {
   return (
     <View style={styles.containerStyle}>
       <Image source={cart} style={styles.image} />
@@ -10,7 +10,7 @@ const LoadingScreen = () => {
   );
 };
 
-export default LoadingScreen;
+export default Loading;
 
 const styles = StyleSheet.create({
   image: {
