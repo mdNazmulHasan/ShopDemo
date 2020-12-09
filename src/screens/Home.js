@@ -3,18 +3,21 @@ import {StyleSheet, Text, View, SafeAreaView, Image} from 'react-native';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import shop from '../../assets/shop.webp';
 import colors from '../utils/colors';
+import variables from '../utils/variables';
 
 const Home = () => {
   return (
     <>
       <SafeAreaView style={styles.containerStyle}>
-        <Text style={styles.welcomeTextStyle}>Welcome to Bolt</Text>
+        <Text style={styles.welcomeTextStyle}>{variables.welcomeText}</Text>
         <Image source={shop} style={styles.brandImageStyle} />
         <View>
           <TouchableOpacity style={styles.loginBtnContainerStyle}>
-            <Text style={styles.loginBtnTextStyle}>Login with phone</Text>
+            <Text style={styles.loginBtnTextStyle}>
+              {variables.loginBtnText}
+            </Text>
           </TouchableOpacity>
-          <Text style={styles.shopTextStyle}>Shop with us</Text>
+          <Text style={styles.shopTextStyle}>{variables.shopText}</Text>
         </View>
       </SafeAreaView>
     </>
