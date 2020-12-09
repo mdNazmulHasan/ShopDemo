@@ -1,11 +1,12 @@
 import React, {useEffect} from 'react';
 import {Image, StyleSheet, View} from 'react-native';
 import cart from '../../assets/carts.png';
+import variables from '../utils/variables';
 
 const Loading = (props) => {
   useEffect(() => {
     setTimeout(() => {
-      props.navigation.navigate('Login');
+      props.navigation.navigate(variables.loginScreen);
     }, 3000);
   }, [props.navigation]);
   return (
