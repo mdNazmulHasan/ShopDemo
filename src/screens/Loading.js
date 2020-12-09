@@ -1,8 +1,13 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {Image, StyleSheet, View} from 'react-native';
 import cart from '../../assets/carts.png';
 
-const Loading = () => {
+const Loading = (props) => {
+  useEffect(() => {
+    setTimeout(() => {
+      props.navigation.navigate('Login');
+    }, 3000);
+  }, [props.navigation]);
   return (
     <View style={styles.containerStyle}>
       <Image source={cart} style={styles.image} />
