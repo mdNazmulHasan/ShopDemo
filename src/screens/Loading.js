@@ -1,8 +1,7 @@
 import React, {useEffect} from 'react';
 import {Image, StyleSheet, View} from 'react-native';
-import cart from '../../assets/carts.png';
-import colors from '../utils/colors';
-import variables from '../utils/variables';
+import {cartsImage} from '../../assets';
+import {variables, colors} from '../utils';
 
 const Loading = (props) => {
   useEffect(() => {
@@ -12,7 +11,7 @@ const Loading = (props) => {
   }, [props.navigation]);
   return (
     <View style={styles.containerStyle}>
-      <Image source={cart} style={styles.image} />
+      <Image source={cartsImage} style={styles.image} />
     </View>
   );
 };

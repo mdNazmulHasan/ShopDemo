@@ -1,9 +1,8 @@
 import React from 'react';
 import {StyleSheet, Text, View, SafeAreaView, Image} from 'react-native';
 import {TouchableOpacity} from 'react-native-gesture-handler';
-import shop from '../../assets/shop.webp';
-import colors from '../utils/colors';
-import variables from '../utils/variables';
+import {variables, colors} from '../utils';
+import {shopImage} from '../../assets';
 
 const Home = (props) => {
   const handleLoginWithPhone = () => {
@@ -13,7 +12,7 @@ const Home = (props) => {
     <>
       <SafeAreaView style={styles.containerStyle}>
         <Text style={styles.welcomeTextStyle}>{variables.welcomeText}</Text>
-        <Image source={shop} style={styles.brandImageStyle} />
+        <Image source={shopImage} style={styles.brandImageStyle} />
         <View>
           <TouchableOpacity
             style={styles.loginBtnContainerStyle}
