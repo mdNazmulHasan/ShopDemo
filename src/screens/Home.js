@@ -4,7 +4,7 @@ import {TouchableOpacity} from 'react-native-gesture-handler';
 import shop from '../../assets/shop.webp';
 import colors from '../utils/colors';
 
-const Login = () => {
+const Home = () => {
   return (
     <>
       <SafeAreaView style={styles.containerStyle}>
@@ -21,7 +21,7 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Home;
 
 const styles = StyleSheet.create({
   containerStyle: {flex: 1, justifyContent: 'space-between'},

@@ -7,7 +7,7 @@ import variables from '../utils/variables';
 const Loading = (props) => {
   useEffect(() => {
     setTimeout(() => {
-      props.navigation.navigate(variables.loginScreen);
+      props.navigation.navigate(variables.homeScreen);
     }, 3000);
   }, [props.navigation]);
   return (
