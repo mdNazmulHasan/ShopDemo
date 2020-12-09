@@ -5,14 +5,19 @@ import shop from '../../assets/shop.webp';
 import colors from '../utils/colors';
 import variables from '../utils/variables';
 
-const Home = () => {
+const Home = (props) => {
+  const handleLoginWithPhone = () => {
+    props.navigation.navigate(variables.loginScreen);
+  };
   return (
     <>
       <SafeAreaView style={styles.containerStyle}>
         <Text style={styles.welcomeTextStyle}>{variables.welcomeText}</Text>
         <Image source={shop} style={styles.brandImageStyle} />
         <View>
-          <TouchableOpacity style={styles.loginBtnContainerStyle}>
+          <TouchableOpacity
+            style={styles.loginBtnContainerStyle}
+            onPress={handleLoginWithPhone}>
             <Text style={styles.loginBtnTextStyle}>
               {variables.loginBtnText}
             </Text>

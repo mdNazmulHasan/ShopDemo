@@ -3,4 +3,5 @@ export default {
   welcomeText: 'Welcome to Bolt',
   loginBtnText: 'Login with phone',
   shopText: 'Shop with us',
+  loginScreen: 'Login',
 };
