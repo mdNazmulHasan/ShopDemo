@@ -1,6 +1,7 @@
 import React, {useEffect} from 'react';
 import {Image, StyleSheet, View} from 'react-native';
 import cart from '../../assets/carts.png';
+import colors from '../utils/colors';
 import variables from '../utils/variables';
 
 const Loading = (props) => {
@@ -26,7 +27,7 @@ const styles = StyleSheet.create({
   },
   containerStyle: {
     flex: 1,
-    backgroundColor: '#667EEA',
+    backgroundColor: colors.cornFlowerBlue,
     alignItems: 'center',
     justifyContent: 'center',
   },
