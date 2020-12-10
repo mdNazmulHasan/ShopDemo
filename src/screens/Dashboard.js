@@ -32,7 +32,7 @@ const Dashboard = () => {
     return (
       <View style={styles.categoryItemContainer}>
         <Image source={{uri: item.picUrl}} style={styles.featuredImageStyle} />
-        <Text>{item.price}</Text>
+        <Text style={styles.priceTextStyle}>{item.price}</Text>
         <Text>{item.productName}</Text>
       </View>
     );
@@ -90,4 +90,5 @@ const styles = StyleSheet.create({
   innerContainerStyle: {flex: 1, paddingLeft: 25},
   sectionTitleText: {fontSize: 20, marginTop: 58, marginBottom: 14},
   featuredImageStyle: {width: 150, height: 180, borderRadius: 5},
+  priceTextStyle: {marginVertical: 12},
 });
