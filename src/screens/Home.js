@@ -1,9 +1,8 @@
 import React from 'react';
 import {StyleSheet, Text, View, SafeAreaView, Image} from 'react-native';
-import {TouchableOpacity} from 'react-native-gesture-handler';
-import {variables, colors} from '../utils';
+import {variables} from '../utils';
 import {shopImage} from '../../assets';
-import Button from '../component/Button';
+import {Button} from '../component';
 
 const Home = (props) => {
   const handleLoginWithPhone = () => {
