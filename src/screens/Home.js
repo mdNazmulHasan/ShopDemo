@@ -3,6 +3,7 @@ import {StyleSheet, Text, View, SafeAreaView, Image} from 'react-native';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import {variables, colors} from '../utils';
 import {shopImage} from '../../assets';
+import Button from '../component/Button';
 
 const Home = (props) => {
   const handleLoginWithPhone = () => {
@@ -14,13 +15,10 @@ const Home = (props) => {
         <Text style={styles.welcomeTextStyle}>{variables.welcomeText}</Text>
         <Image source={shopImage} style={styles.brandImageStyle} />
         <View>
-          <TouchableOpacity
-            style={styles.loginBtnContainerStyle}
-            onPress={handleLoginWithPhone}>
-            <Text style={styles.loginBtnTextStyle}>
-              {variables.loginBtnText}
-            </Text>
-          </TouchableOpacity>
+          <Button
+            label={variables.loginBtnText}
+            onPress={handleLoginWithPhone}
+          />
           <Text style={styles.shopTextStyle}>{variables.shopText}</Text>
         </View>
       </SafeAreaView>
@@ -43,13 +41,5 @@ const styles = StyleSheet.create({
     resizeMode: 'contain',
     alignSelf: 'center',
   },
-  loginBtnContainerStyle: {
-    backgroundColor: colors.cornFlowerBlue,
-    alignSelf: 'center',
-    paddingHorizontal: 20,
-    paddingVertical: 10,
-    borderRadius: 6,
-  },
-  loginBtnTextStyle: {fontSize: 15, color: colors.white},
   shopTextStyle: {alignSelf: 'center', padding: 20, fontSize: 18},
 });
