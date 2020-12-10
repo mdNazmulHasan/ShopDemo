@@ -42,7 +42,6 @@ const Dashboard = () => {
               keyExtractor={(item, index) => `category_${item.id}`}
             />
           </View>
-
           <Text style={styles.sectionTitleText}>{variables.featured}</Text>
         </View>
       </SafeAreaView>
