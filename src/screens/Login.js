@@ -11,7 +11,7 @@ const Login = (props) => {
     setPhone(text);
   };
   const handleLoginBtnOnPress = () => {
-    console.log('login');
+    props.navigation.navigate(variables.verifyScreen);
   };
   return (
     <>
