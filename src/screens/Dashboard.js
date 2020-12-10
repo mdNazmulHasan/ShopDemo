@@ -6,11 +6,12 @@ import {
   SafeAreaView,
   FlatList,
   ImageBackground,
-  Platform,
+  Image,
 } from 'react-native';
 import {menu} from '../../assets';
 import {Header} from '../component';
 import category from '../mockData/category';
+import featuredProducts from '../mockData/featuredProducts';
 import {variables} from '../utils';
 
 const Dashboard = () => {
@@ -24,6 +25,15 @@ const Dashboard = () => {
           style={styles.categoryItemBackgroundImageContainerStyle}>
           <Text style={styles.categoryItemNameText}>{item.categoryName}</Text>
         </ImageBackground>
+      </View>
+    );
+  };
+  const renderFeaturedProducts = ({item}) => {
+    return (
+      <View style={styles.categoryItemContainer}>
+        <Image source={{uri: item.picUrl}} style={styles.featuredImageStyle} />
+        <Text>{item.price}</Text>
+        <Text>{item.productName}</Text>
       </View>
     );
   };
@@ -43,6 +53,15 @@ const Dashboard = () => {
             />
           </View>
           <Text style={styles.sectionTitleText}>{variables.featured}</Text>
+          <View>
+            <FlatList
+              showsHorizontalScrollIndicator={false}
+              data={featuredProducts}
+              horizontal={true}
+              renderItem={renderFeaturedProducts}
+              keyExtractor={(item, index) => `featured_${item.id}`}
+            />
+          </View>
         </View>
       </SafeAreaView>
     </>
@@ -69,5 +88,6 @@ const styles = StyleSheet.create({
   },
   containerStyle: {flex: 1},
   innerContainerStyle: {flex: 1, paddingLeft: 25},
-  sectionTitleText: {fontSize: 20, marginTop: 58},
+  sectionTitleText: {fontSize: 20, marginTop: 58, marginBottom: 14},
+  featuredImageStyle: {width: 150, height: 180, borderRadius: 5},
 });
