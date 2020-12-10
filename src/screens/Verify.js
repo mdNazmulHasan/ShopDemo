@@ -11,7 +11,7 @@ const Verify = (props) => {
     setOtp(text);
   };
   const handleVerifyBtnPress = () => {
-    console.log('verify');
+    props.navigation.navigate(variables.dashboardScreen);
   };
   return (
     <>
