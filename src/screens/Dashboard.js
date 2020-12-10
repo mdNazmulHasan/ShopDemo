@@ -14,7 +14,6 @@ import category from '../mockData/category';
 import {variables} from '../utils';
 
 const Dashboard = () => {
-  const ITEM_HEIGHT = 65;
   const renderCategoryItem = ({item}) => {
     return (
       <View style={styles.categoryItemContainer}>
@@ -34,17 +33,17 @@ const Dashboard = () => {
         <View style={styles.innerContainerStyle}>
           <Header icon={menu} />
           <Text style={styles.sectionTitleText}>{variables.categories}</Text>
-          <FlatList
-            data={category}
-            horizontal={true}
-            renderItem={renderCategoryItem}
-            keyExtractor={(item, index) => `category_${item.id}`}
-            getItemLayout={(data, index) => ({
-              index,
-              length: ITEM_HEIGHT,
-              offset: ITEM_HEIGHT * index,
-            })}
-          />
+          <View>
+            <FlatList
+              showsHorizontalScrollIndicator={false}
+              data={category}
+              horizontal={true}
+              renderItem={renderCategoryItem}
+              keyExtractor={(item, index) => `category_${item.id}`}
+            />
+          </View>
+
+          <Text style={styles.sectionTitleText}>{variables.featured}</Text>
         </View>
       </SafeAreaView>
     </>
