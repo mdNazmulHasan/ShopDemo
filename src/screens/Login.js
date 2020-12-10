@@ -7,7 +7,6 @@ import {leftArrowIcon} from '../../assets';
 const Login = (props) => {
   const [phone, setPhone] = React.useState('');
   const handleHeaderIconPress = () => {
-    console.log('back');
     props.navigation.goBack();
   };
   const handlePhoneChangeText = (text) => {
@@ -15,17 +14,15 @@ const Login = (props) => {
   };
   return (
     <>
-      <SafeAreaView style={{flex: 1}}>
-        <View style={{flex: 1, padding: 20}}>
+      <SafeAreaView style={styles.containerStyle}>
+        <View style={styles.innerContainerStyle}>
           <Header icon={leftArrowIcon} onPress={handleHeaderIconPress} />
-          <Text style={{fontSize: 30, color: colors.black, marginVertical: 30}}>
-            Login
-          </Text>
+          <Text style={styles.labelTextStyle}>{variables.loginScreen}</Text>
           <Input
-            label="Phone"
-            placeHolder="Enter your phone number"
+            label={variables.phone}
+            placeHolder={variables.phonePlaceHolder}
             value={phone}
-            keyboardType="phone-pad"
+            keyboardType={variables.phoneKeyboardType}
             onChangeText={handlePhoneChangeText}
           />
         </View>
@@ -36,4 +33,8 @@ const Login = (props) => {
 
 export default Login;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  containerStyle: {flex: 1},
+  innerContainerStyle: {flex: 1, padding: 20},
+  labelTextStyle: {fontSize: 30, color: colors.black, marginVertical: 30},
+});

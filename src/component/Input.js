@@ -6,13 +6,9 @@ import {colors} from '../utils';
 const Input = ({label, keyboardType, onChangeText, value, placeHolder}) => {
   return (
     <View>
-      <Text style={{color: colors.silverChalice}}>{label}</Text>
+      <Text style={styles.labelStyle}>{label}</Text>
       <TextInput
-        style={{
-          paddingVertical: 10,
-          borderBottomWidth: 1,
-          borderBottomColor: colors.silverChalice,
-        }}
+        style={styles.inputStyle}
         placeholder={placeHolder}
         value={value}
         keyboardType={keyboardType}
@@ -24,4 +20,11 @@ const Input = ({label, keyboardType, onChangeText, value, placeHolder}) => {
 
 export default Input;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  inputStyle: {
+    paddingVertical: 10,
+    borderBottomWidth: 1,
+    borderBottomColor: colors.silverChalice,
+  },
+  labelStyle: {color: colors.silverChalice},
+});
