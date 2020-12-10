@@ -3,6 +3,7 @@ import {StyleSheet, Text, SafeAreaView, View} from 'react-native';
 import {Header, Input} from '../component';
 import {variables, colors} from '../utils';
 import {leftArrowIcon} from '../../assets';
+import Button from '../component/Button';
 
 const Login = (props) => {
   const [phone, setPhone] = React.useState('');
@@ -11,6 +12,9 @@ const Login = (props) => {
   };
   const handlePhoneChangeText = (text) => {
     setPhone(text);
+  };
+  const handleLoginBtnOnPress = () => {
+    console.log('login');
   };
   return (
     <>
@@ -25,6 +29,11 @@ const Login = (props) => {
             keyboardType={variables.phoneKeyboardType}
             onChangeText={handlePhoneChangeText}
           />
+          <Button
+            label={variables.loginScreen}
+            onPress={handleLoginBtnOnPress}
+            containerStyle={styles.btnContainerStyle}
+          />
         </View>
       </SafeAreaView>
     </>
@@ -37,4 +46,8 @@ const styles = StyleSheet.create({
   containerStyle: {flex: 1},
   innerContainerStyle: {flex: 1, padding: 20},
   labelTextStyle: {fontSize: 30, color: colors.black, marginVertical: 30},
+  btnContainerStyle: {
+    paddingHorizontal: 150,
+    marginVertical: 100,
+  },
 });
