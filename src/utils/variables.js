@@ -12,4 +12,5 @@ export default {
   otp: 'OTP',
   otpPlaceHolder: 'Enter OTP',
   dashboardScreen: 'Dashboard',
+  categories: 'Categories',
 };
