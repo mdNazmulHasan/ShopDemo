@@ -11,4 +11,5 @@ export default {
   phoneKeyboardType: 'phone-pad',
   otp: 'OTP',
   otpPlaceHolder: 'Enter OTP',
+  dashboardScreen: 'Dashboard',
 };

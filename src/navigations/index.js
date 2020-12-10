@@ -1,10 +1,7 @@
 import * as React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
-import Loading from '../screens/Loading';
-import Home from '../screens/Home';
-import Login from '../screens/Login';
 import {variables} from '../utils';
-import Verify from '../screens/Verify';
+import {Loading, Login, Home, Verify, Dashboard} from '../screens';
 const Stack = createStackNavigator();
 const headerOption = {
   gestureEnabled: false,
@@ -32,6 +29,11 @@ function RootNavigator() {
       <Stack.Screen
         name={variables.verifyScreen}
         component={Verify}
+        options={headerOption}
+      />
+      <Stack.Screen
+        name={variables.dashboardScreen}
+        component={Dashboard}
         options={headerOption}
       />
     </Stack.Navigator>
