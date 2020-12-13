@@ -21,6 +21,8 @@ import {
 const Checkout = (props) => {
   const dispatch = useDispatch();
   const cartState = useSelector((state) => state.carts.carts);
+  const subtotalPrice = useSelector((state) => state.carts.subtotalPrice);
+  const totalPrice = useSelector((state) => state.carts.totalPrice);
 
   const handleHeaderIconPress = () => {
     props.navigation.goBack();
@@ -47,7 +49,7 @@ const Checkout = (props) => {
         <View style={{marginLeft: 19, justifyContent: 'space-between'}}>
           <Text>{item.productName}</Text>
           <Text style={{color: colors.grey}}>{item.brand}</Text>
-          <Text style={styles.priceTextStyle}>{item.price}</Text>
+          <Text style={styles.priceTextStyle}>${item.price}</Text>
           <View
             style={{
               backgroundColor: colors.wildSand,
@@ -102,7 +104,7 @@ const Checkout = (props) => {
           />
           <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
             <Text style={styles.calculationSubtitleText}>Subtotal</Text>
-            <Text>$160.00</Text>
+            <Text>${subtotalPrice}</Text>
           </View>
           <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
             <Text style={styles.calculationSubtitleText}>Discount</Text>
@@ -121,7 +123,7 @@ const Checkout = (props) => {
           />
           <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
             <Text>Total</Text>
-            <Text>$10.00</Text>
+            <Text>${totalPrice}</Text>
           </View>
         </View>
         <Button label="Back to Home" onPress={handleHomeBtnPress} />
