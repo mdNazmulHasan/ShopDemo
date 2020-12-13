@@ -42,11 +42,10 @@ const cartReducer = (state = initialState, action) => {
       const indexForDecrease = cartState.findIndex(
         (data) => data.id === action.itemId,
       );
-      if (existingIndex >= 0) {
+      if (indexForDecrease >= 0) {
         const existingData = cartState[indexForDecrease];
         const existingQuantity = existingData.quantity;
-        const updatedQuantity =
-          existingQuantity > 1 ? existingQuantity - 1 : existingQuantity;
+        const updatedQuantity = existingQuantity - 1;
         existingData.quantity = updatedQuantity;
         cartState[indexForDecrease] = existingData;
       }

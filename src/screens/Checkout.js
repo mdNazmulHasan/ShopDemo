@@ -15,7 +15,7 @@ import category from '../mockData/category';
 import featuredProducts from '../mockData/featuredProducts';
 import {colors, variables} from '../utils';
 import {useSelector, useDispatch} from 'react-redux';
-import {addToCart} from '../store/actions/carts';
+import {decreaseQuantity, increaseQuantity} from '../store/actions/carts';
 
 const Checkout = (props) => {
   const dispatch = useDispatch();
@@ -23,6 +23,14 @@ const Checkout = (props) => {
 
   const handleHeaderIconPress = () => {
     props.navigation.goBack();
+  };
+  const handleIncrement = (item) => {
+    dispatch(increaseQuantity(item.id));
+  };
+  const handleDecrement = (item) => {
+    if (item.quantity > 1) {
+      dispatch(decreaseQuantity(item.id));
+    }
   };
 
   const renderFeaturedProducts = ({item}) => {
@@ -42,11 +50,11 @@ const Checkout = (props) => {
               alignItems: 'center',
               width: 114,
             }}>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={() => handleDecrement(item)}>
               <Text style={styles.counterTextStyle}>-</Text>
             </TouchableOpacity>
             <Text>{item.quantity}</Text>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={() => handleIncrement(item)}>
               <Text style={styles.counterTextStyle}>+</Text>
             </TouchableOpacity>
           </View>
