@@ -17,6 +17,7 @@ import {
   increaseQuantity,
   removeItem,
 } from '../store/actions/carts';
+import CountDown from 'react-native-countdown-component';
 
 const Checkout = (props) => {
   const dispatch = useDispatch();
@@ -82,6 +83,17 @@ const Checkout = (props) => {
       <SafeAreaView style={styles.containerStyle}>
         <View style={styles.innerContainerStyle}>
           <Header icon={leftArrowIcon} onPress={handleHeaderIconPress} />
+          <CountDown
+            until={20}
+            size={30}
+            onFinish={() =>
+              props.navigation.navigate(variables.dashboardScreen)
+            }
+            digitStyle={{backgroundColor: '#FFF'}}
+            digitTxtStyle={{color: '#1CC625'}}
+            timeToShow={['S']}
+            timeLabels={{m: 'MM', s: 'Seconds'}}
+          />
           <Text style={styles.sectionTitleText}>
             {variables.checkoutScreen}
           </Text>
@@ -144,7 +156,7 @@ const styles = StyleSheet.create({
   },
   containerStyle: {flex: 1},
   innerContainerStyle: {flex: 1, paddingHorizontal: 25},
-  sectionTitleText: {fontSize: 20, marginTop: 40, marginBottom: 14},
+  sectionTitleText: {fontSize: 20, marginBottom: 14},
   featuredImageStyle: {width: 90, height: 120, borderRadius: 5},
   priceTextStyle: {color: colors.governorBay},
   counterTextStyle: {fontSize: 15, padding: 10},
