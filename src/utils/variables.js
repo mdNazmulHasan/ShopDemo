@@ -16,4 +16,5 @@ export default {
   featured: 'Featured',
   bestSell: 'Best Sell',
   checkoutScreen: 'Checkout',
+  address: 'Shewrapara, Mirpur, Dhaka-1216 \n House no: 938\n Road no: 9',
 };

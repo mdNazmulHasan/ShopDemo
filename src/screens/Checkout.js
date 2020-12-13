@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import {leftArrowIcon} from '../../assets';
-import {Header} from '../component';
+import {Button, Header} from '../component';
 import {colors, variables} from '../utils';
 import {useSelector, useDispatch} from 'react-redux';
 import {
@@ -35,6 +35,9 @@ const Checkout = (props) => {
   };
   const handleRemove = (item) => {
     dispatch(removeItem(item.id));
+  };
+  const handleHomeBtnPress = () => {
+    props.navigation.navigate(variables.dashboardScreen);
   };
 
   const renderFeaturedProducts = ({item}) => {
@@ -80,7 +83,7 @@ const Checkout = (props) => {
           <Text style={styles.sectionTitleText}>
             {variables.checkoutScreen}
           </Text>
-          <View>
+          <View style={{flex: 1}}>
             <FlatList
               showsHorizontalScrollIndicator={false}
               data={cartState}
@@ -89,7 +92,39 @@ const Checkout = (props) => {
               ListEmptyComponent={renderEmptyContainer}
             />
           </View>
+          <Text style={{color: colors.tundora}}>{variables.address}</Text>
+          <View
+            style={{
+              height: 1,
+              backgroundColor: colors.dustyGrey,
+              marginVertical: 23,
+            }}
+          />
+          <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+            <Text style={styles.calculationSubtitleText}>Subtotal</Text>
+            <Text>$160.00</Text>
+          </View>
+          <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+            <Text style={styles.calculationSubtitleText}>Discount</Text>
+            <Text>5%</Text>
+          </View>
+          <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+            <Text style={styles.calculationSubtitleText}>Shipping</Text>
+            <Text>$10.00</Text>
+          </View>
+          <View
+            style={{
+              height: 1,
+              backgroundColor: colors.dustyGrey,
+              marginVertical: 13,
+            }}
+          />
+          <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+            <Text>Total</Text>
+            <Text>$10.00</Text>
+          </View>
         </View>
+        <Button label="Back to Home" onPress={handleHomeBtnPress} />
       </SafeAreaView>
     </>
   );
@@ -105,24 +140,10 @@ const styles = StyleSheet.create({
     margin: 10,
     justifyContent: 'space-between',
   },
-  categoryItemImageStyle: {borderRadius: 5},
-  categoryItemBackgroundImageContainerStyle: {
-    height: 104,
-    width: 100,
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderRadius: 5,
-  },
-  categoryItemNameText: {
-    fontWeight: 'bold',
-    color: 'white',
-    textAlign: 'center',
-    alignSelf: 'center',
-  },
   containerStyle: {flex: 1},
   innerContainerStyle: {flex: 1, paddingHorizontal: 25},
   sectionTitleText: {fontSize: 20, marginTop: 40, marginBottom: 14},
-  featuredImageStyle: {width: 110, height: 140, borderRadius: 5},
+  featuredImageStyle: {width: 90, height: 120, borderRadius: 5},
   priceTextStyle: {color: colors.governorBay},
   counterTextStyle: {fontSize: 15, padding: 10},
   emptyMessageStyle: {
@@ -130,4 +151,5 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     fontSize: 20,
   },
+  calculationSubtitleText: {color: colors.grey},
 });

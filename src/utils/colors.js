@@ -6,4 +6,6 @@ export default {
   governorBay: '#374ABE',
   grey: '#919191',
   wildSand: '#F6F6F6',
+  tundora: '#434343',
+  dustyGrey: '#979797',
 };
