@@ -12,7 +12,11 @@ import {leftArrowIcon} from '../../assets';
 import {Header} from '../component';
 import {colors, variables} from '../utils';
 import {useSelector, useDispatch} from 'react-redux';
-import {decreaseQuantity, increaseQuantity, removeItem} from '../store/actions/carts';
+import {
+  decreaseQuantity,
+  increaseQuantity,
+  removeItem,
+} from '../store/actions/carts';
 
 const Checkout = (props) => {
   const dispatch = useDispatch();
@@ -65,7 +69,9 @@ const Checkout = (props) => {
       </View>
     );
   };
-  const renderEmptyContainer = () => <Text>Your Cart is Empty</Text>;
+  const renderEmptyContainer = () => (
+    <Text style={styles.emptyMessageStyle}>Your Cart is Empty</Text>
+  );
   return (
     <>
       <SafeAreaView style={styles.containerStyle}>
@@ -119,4 +125,9 @@ const styles = StyleSheet.create({
   featuredImageStyle: {width: 110, height: 140, borderRadius: 5},
   priceTextStyle: {color: colors.governorBay},
   counterTextStyle: {fontSize: 15, padding: 10},
+  emptyMessageStyle: {
+    textAlign: 'center',
+    alignSelf: 'center',
+    fontSize: 20,
+  },
 });
