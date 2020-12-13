@@ -8,6 +8,7 @@ import {
   ImageBackground,
   Image,
 } from 'react-native';
+import {TouchableOpacity} from 'react-native-gesture-handler';
 import {menu} from '../../assets';
 import {Header} from '../component';
 import category from '../mockData/category';
@@ -15,6 +16,9 @@ import featuredProducts from '../mockData/featuredProducts';
 import {variables} from '../utils';
 
 const Dashboard = () => {
+  const handleProductSelect = (item) => {
+    console.log(item);
+  };
   const renderCategoryItem = ({item}) => {
     return (
       <View style={styles.categoryItemContainer}>
@@ -30,11 +34,16 @@ const Dashboard = () => {
   };
   const renderFeaturedProducts = ({item}) => {
     return (
-      <View style={styles.categoryItemContainer}>
-        <Image source={{uri: item.picUrl}} style={styles.featuredImageStyle} />
-        <Text style={styles.priceTextStyle}>{item.price}</Text>
-        <Text>{item.productName}</Text>
-      </View>
+      <TouchableOpacity onPress={() => handleProductSelect(item)}>
+        <View style={styles.categoryItemContainer}>
+          <Image
+            source={{uri: item.picUrl}}
+            style={styles.featuredImageStyle}
+          />
+          <Text style={styles.priceTextStyle}>{item.price}</Text>
+          <Text>{item.productName}</Text>
+        </View>
+      </TouchableOpacity>
     );
   };
   return (
