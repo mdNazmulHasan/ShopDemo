@@ -31,10 +31,6 @@ const cartReducer = (state = initialState, action) => {
       const subtotalPrice = cartState.reduce((total, currentValue) => {
         return total + currentValue.price * currentValue.quantity;
       }, 0);
-      console.log(
-        '🚀 ~ file: carts.js ~ line 37 ~ subtotalPrice=cartState.reduce ~ subtotalPrice',
-        subtotalPrice,
-      );
       const discountPrice = (subtotalPrice * 5) / 100;
       const totalPrice = subtotalPrice - discountPrice + 10;
 
@@ -110,11 +106,6 @@ const cartReducer = (state = initialState, action) => {
           return total + currentValue.price * currentValue.quantity;
         },
         0,
-      );
-      console.log(
-        '🚀 ~ file: carts.js ~ line 114 ~ cartReducer ~ subtotalPriceAfterRemoveItem',
-        subtotalPriceAfterRemoveItem,
-        cartState,
       );
       const discountPriceAfterRemoveItem =
         (subtotalPriceAfterRemoveItem * 5) / 100;
