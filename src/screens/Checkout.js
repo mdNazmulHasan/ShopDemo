@@ -38,17 +38,22 @@ const Checkout = (props) => {
               backgroundColor: colors.wildSand,
               justifyContent: 'space-between',
               flexDirection: 'row',
-              padding: 10,
+              paddingHorizontal: 10,
+              alignItems: 'center',
+              width: 114,
             }}>
             <TouchableOpacity>
-              <Text>-</Text>
+              <Text style={styles.counterTextStyle}>-</Text>
             </TouchableOpacity>
             <Text>{item.quantity}</Text>
             <TouchableOpacity>
-              <Text>+</Text>
+              <Text style={styles.counterTextStyle}>+</Text>
             </TouchableOpacity>
           </View>
         </View>
+        <TouchableOpacity>
+          <Text>X</Text>
+        </TouchableOpacity>
       </View>
     );
   };
@@ -82,6 +87,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     backgroundColor: colors.white,
     margin: 10,
+    justifyContent: 'space-between',
   },
   categoryItemImageStyle: {borderRadius: 5},
   categoryItemBackgroundImageContainerStyle: {
@@ -102,4 +108,5 @@ const styles = StyleSheet.create({
   sectionTitleText: {fontSize: 20, marginTop: 58, marginBottom: 14},
   featuredImageStyle: {width: 110, height: 140, borderRadius: 5},
   priceTextStyle: {color: colors.governorBay},
+  counterTextStyle: {fontSize: 15, padding: 10},
 });
