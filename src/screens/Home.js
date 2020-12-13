@@ -3,10 +3,14 @@ import {StyleSheet, Text, View, SafeAreaView, Image} from 'react-native';
 import {variables} from '../utils';
 import {shopImage} from '../../assets';
 import {Button} from '../component';
+import {TouchableOpacity} from 'react-native-gesture-handler';
 
 const Home = (props) => {
   const handleLoginWithPhone = () => {
     props.navigation.navigate(variables.loginScreen);
+  };
+  const handleShopBtnPress = () => {
+    props.navigation.navigate(variables.dashboardScreen);
   };
   return (
     <>
@@ -18,7 +22,9 @@ const Home = (props) => {
             label={variables.loginBtnText}
             onPress={handleLoginWithPhone}
           />
-          <Text style={styles.shopTextStyle}>{variables.shopText}</Text>
+          <TouchableOpacity onPress={handleShopBtnPress}>
+            <Text style={styles.shopTextStyle}>{variables.shopText}</Text>
+          </TouchableOpacity>
         </View>
       </SafeAreaView>
     </>

@@ -17,4 +17,13 @@ export default {
   bestSell: 'Best Sell',
   checkoutScreen: 'Checkout',
   address: 'Shewrapara, Mirpur, Dhaka-1216 \n House no: 938\n Road no: 9',
+  minus: '-',
+  plus: '+',
+  cancel: 'X',
+  emptyText: 'Your Cart is Empty',
+  subtotal: 'Subtotal',
+  discount: 'Discount',
+  shipping: 'Shipping',
+  total: 'Total',
+  backToHome: 'Back to Home',
 };

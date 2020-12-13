@@ -28,55 +28,52 @@ const Checkout = (props) => {
   const handleHeaderIconPress = () => {
     props.navigation.goBack();
   };
+
   const handleIncrement = (item) => {
     dispatch(increaseQuantity(item.id));
   };
+
   const handleDecrement = (item) => {
     if (item.quantity > 1) {
       dispatch(decreaseQuantity(item.id));
     }
   };
+
   const handleRemove = (item) => {
     dispatch(removeItem(item.id));
   };
+
   const handleHomeBtnPress = () => {
     props.navigation.navigate(variables.dashboardScreen);
   };
 
-  const renderFeaturedProducts = ({item}) => {
+  const renderCartItems = ({item}) => {
     return (
       <View style={styles.cartItemContainer}>
-        <Image source={{uri: item.picUrl}} style={styles.featuredImageStyle} />
-        <View style={{marginLeft: 19, justifyContent: 'space-between'}}>
+        <Image source={{uri: item.picUrl}} style={styles.imageStyle} />
+        <View style={styles.cartItemMiddleContainer}>
           <Text>{item.productName}</Text>
-          <Text style={{color: colors.grey}}>{item.brand}</Text>
+          <Text style={styles.greyText}>{item.brand}</Text>
           <Text style={styles.priceTextStyle}>${item.price}</Text>
-          <View
-            style={{
-              backgroundColor: colors.wildSand,
-              justifyContent: 'space-between',
-              flexDirection: 'row',
-              paddingHorizontal: 10,
-              alignItems: 'center',
-              width: 114,
-            }}>
+          <View style={styles.counterContainer}>
             <TouchableOpacity onPress={() => handleDecrement(item)}>
-              <Text style={styles.counterTextStyle}>-</Text>
+              <Text style={styles.counterTextStyle}>{variables.minus}</Text>
             </TouchableOpacity>
             <Text>{item.quantity}</Text>
             <TouchableOpacity onPress={() => handleIncrement(item)}>
-              <Text style={styles.counterTextStyle}>+</Text>
+              <Text style={styles.counterTextStyle}>{variables.plus}</Text>
             </TouchableOpacity>
           </View>
         </View>
         <TouchableOpacity onPress={() => handleRemove(item)}>
-          <Text>X</Text>
+          <Text>{variables.cancel}</Text>
         </TouchableOpacity>
       </View>
     );
   };
+
   const renderEmptyContainer = () => (
-    <Text style={styles.emptyMessageStyle}>Your Cart is Empty</Text>
+    <Text style={styles.emptyMessageStyle}>{variables.emptyText}</Text>
   );
   return (
     <>
@@ -89,56 +86,44 @@ const Checkout = (props) => {
             onFinish={() =>
               props.navigation.navigate(variables.dashboardScreen)
             }
-            digitStyle={{backgroundColor: '#FFF'}}
-            digitTxtStyle={{color: '#1CC625'}}
+            digitStyle={styles.digitStyle}
+            digitTxtStyle={styles.digitTxtStyle}
             timeToShow={['S']}
             timeLabels={{m: 'MM', s: 'Seconds'}}
           />
           <Text style={styles.sectionTitleText}>
             {variables.checkoutScreen}
           </Text>
-          <View style={{flex: 1}}>
+          <View style={styles.listContainerStyle}>
             <FlatList
               showsHorizontalScrollIndicator={false}
               data={cartState}
-              renderItem={renderFeaturedProducts}
+              renderItem={renderCartItems}
               keyExtractor={(item, index) => `featured_${item.id}`}
               ListEmptyComponent={renderEmptyContainer}
             />
           </View>
           <Text style={{color: colors.tundora}}>{variables.address}</Text>
-          <View
-            style={{
-              height: 1,
-              backgroundColor: colors.dustyGrey,
-              marginVertical: 23,
-            }}
-          />
-          <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-            <Text style={styles.calculationSubtitleText}>Subtotal</Text>
+          <View style={styles.verticalSeparator} />
+          <View style={styles.calculationTextContainer}>
+            <Text style={styles.greyText}>{variables.subtotal}</Text>
             <Text>${subtotalPrice}</Text>
           </View>
-          <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-            <Text style={styles.calculationSubtitleText}>Discount</Text>
+          <View style={styles.calculationTextContainer}>
+            <Text style={styles.greyText}>{variables.discount}</Text>
             <Text>5%</Text>
           </View>
-          <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-            <Text style={styles.calculationSubtitleText}>Shipping</Text>
+          <View style={styles.calculationTextContainer}>
+            <Text style={styles.greyText}>{variables.shipping}</Text>
             <Text>$10.00</Text>
           </View>
-          <View
-            style={{
-              height: 1,
-              backgroundColor: colors.dustyGrey,
-              marginVertical: 13,
-            }}
-          />
-          <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-            <Text>Total</Text>
+          <View style={styles.verticalSeparator} />
+          <View style={styles.calculationTextContainer}>
+            <Text>{variables.total}</Text>
             <Text>${totalPrice}</Text>
           </View>
         </View>
-        <Button label="Back to Home" onPress={handleHomeBtnPress} />
+        <Button label={variables.backToHome} onPress={handleHomeBtnPress} />
       </SafeAreaView>
     </>
   );
@@ -151,13 +136,13 @@ const styles = StyleSheet.create({
     padding: 10,
     flexDirection: 'row',
     backgroundColor: colors.white,
-    margin: 10,
+    margin: 5,
     justifyContent: 'space-between',
   },
   containerStyle: {flex: 1},
   innerContainerStyle: {flex: 1, paddingHorizontal: 25},
   sectionTitleText: {fontSize: 20, marginBottom: 14},
-  featuredImageStyle: {width: 90, height: 120, borderRadius: 5},
+  imageStyle: {width: 90, height: 120, borderRadius: 5},
   priceTextStyle: {color: colors.governorBay},
   counterTextStyle: {fontSize: 15, padding: 10},
   emptyMessageStyle: {
@@ -165,5 +150,26 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     fontSize: 20,
   },
-  calculationSubtitleText: {color: colors.grey},
+  greyText: {color: colors.grey},
+  cartItemMiddleContainer: {marginLeft: 19, justifyContent: 'space-between'},
+  counterContainer: {
+    backgroundColor: colors.wildSand,
+    justifyContent: 'space-between',
+    flexDirection: 'row',
+    paddingHorizontal: 10,
+    alignItems: 'center',
+    width: 114,
+  },
+  digitStyle: {backgroundColor: colors.white},
+  digitTxtStyle: {color: colors.cornFlowerBlue},
+  listContainerStyle: {flex: 1},
+  verticalSeparator: {
+    height: 1,
+    backgroundColor: colors.dustyGrey,
+    marginVertical: 13,
+  },
+  calculationTextContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
 });
