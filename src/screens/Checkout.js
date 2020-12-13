@@ -5,17 +5,14 @@ import {
   View,
   SafeAreaView,
   FlatList,
-  ImageBackground,
   Image,
 } from 'react-native';
 import {TouchableOpacity} from 'react-native-gesture-handler';
-import {leftArrowIcon, menu} from '../../assets';
+import {leftArrowIcon} from '../../assets';
 import {Header} from '../component';
-import category from '../mockData/category';
-import featuredProducts from '../mockData/featuredProducts';
 import {colors, variables} from '../utils';
 import {useSelector, useDispatch} from 'react-redux';
-import {decreaseQuantity, increaseQuantity} from '../store/actions/carts';
+import {decreaseQuantity, increaseQuantity, removeItem} from '../store/actions/carts';
 
 const Checkout = (props) => {
   const dispatch = useDispatch();
@@ -31,6 +28,9 @@ const Checkout = (props) => {
     if (item.quantity > 1) {
       dispatch(decreaseQuantity(item.id));
     }
+  };
+  const handleRemove = (item) => {
+    dispatch(removeItem(item.id));
   };
 
   const renderFeaturedProducts = ({item}) => {
@@ -59,12 +59,13 @@ const Checkout = (props) => {
             </TouchableOpacity>
           </View>
         </View>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => handleRemove(item)}>
           <Text>X</Text>
         </TouchableOpacity>
       </View>
     );
   };
+  const renderEmptyContainer = () => <Text>Your Cart is Empty</Text>;
   return (
     <>
       <SafeAreaView style={styles.containerStyle}>
@@ -79,6 +80,7 @@ const Checkout = (props) => {
               data={cartState}
               renderItem={renderFeaturedProducts}
               keyExtractor={(item, index) => `featured_${item.id}`}
+              ListEmptyComponent={renderEmptyContainer}
             />
           </View>
         </View>
@@ -113,7 +115,7 @@ const styles = StyleSheet.create({
   },
   containerStyle: {flex: 1},
   innerContainerStyle: {flex: 1, paddingHorizontal: 25},
-  sectionTitleText: {fontSize: 20, marginTop: 58, marginBottom: 14},
+  sectionTitleText: {fontSize: 20, marginTop: 40, marginBottom: 14},
   featuredImageStyle: {width: 110, height: 140, borderRadius: 5},
   priceTextStyle: {color: colors.governorBay},
   counterTextStyle: {fontSize: 15, padding: 10},

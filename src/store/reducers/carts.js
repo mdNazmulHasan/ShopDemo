@@ -2,6 +2,7 @@ import {
   ADD_TO_CART,
   DECREASE_QUANTITY,
   INCREASE_QUANTITY,
+  REMOVE_ITEM,
 } from '../actions/carts';
 
 const initialState = {
@@ -50,6 +51,11 @@ const cartReducer = (state = initialState, action) => {
         cartState[indexForDecrease] = existingData;
       }
       return {...state, carts: cartState};
+    case REMOVE_ITEM:
+      const removedCartState = cartState.filter(
+        (data) => data.id !== action.itemId,
+      );
+      return {...state, carts: removedCartState};
     default:
       return state;
   }
