@@ -14,4 +14,5 @@ export default {
   dashboardScreen: 'Dashboard',
   categories: 'Categories',
   featured: 'Featured',
+  bestSell: 'Best Sell',
 };
