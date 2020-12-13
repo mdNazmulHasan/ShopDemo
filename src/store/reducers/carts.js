@@ -6,9 +6,22 @@ const initialState = {
 const cartReducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_TO_CART:
-      const existingCartState = [...state.carts];
-      existingCartState.push(action.cartItem);
-      return {...state, carts: existingCartState};
+      const cartState = [...state.carts];
+      const existingIndex = cartState.findIndex(
+        (data) => data.id === action.cartItem.id,
+      );
+      if (existingIndex >= 0) {
+        const existingData = cartState[existingIndex];
+        const existingQuantity = existingData.quantity;
+        const updatedQuantity = existingQuantity + 1;
+        existingData.quantity = updatedQuantity;
+        cartState[existingIndex] = existingData;
+      } else {
+        const data = action.cartItem;
+        data.quantity = 1;
+        cartState.push(data);
+      }
+      return {...state, carts: cartState};
     default:
       return state;
   }

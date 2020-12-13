@@ -22,10 +22,6 @@ const Dashboard = () => {
   const cartState = useSelector((state) => state.carts.carts);
   const handleProductSelect = async (item) => {
     await dispatch(addToCart(item));
-    console.log(
-      '🚀 ~ file: Dashboard.js ~ line 21 ~ Dashboard ~ cartState',
-      cartState,
-    );
   };
   const renderCategoryItem = ({item}) => {
     return (
