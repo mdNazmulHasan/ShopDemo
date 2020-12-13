@@ -14,10 +14,18 @@ import {Header} from '../component';
 import category from '../mockData/category';
 import featuredProducts from '../mockData/featuredProducts';
 import {variables} from '../utils';
+import {useSelector, useDispatch} from 'react-redux';
+import {addToCart} from '../store/actions/carts';
 
 const Dashboard = () => {
-  const handleProductSelect = (item) => {
-    console.log(item);
+  const dispatch = useDispatch();
+  const cartState = useSelector((state) => state.carts.carts);
+  const handleProductSelect = async (item) => {
+    await dispatch(addToCart(item));
+    console.log(
+      '🚀 ~ file: Dashboard.js ~ line 21 ~ Dashboard ~ cartState',
+      cartState,
+    );
   };
   const renderCategoryItem = ({item}) => {
     return (
