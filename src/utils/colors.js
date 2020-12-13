@@ -3,4 +3,7 @@ export default {
   black: '#000000',
   cornFlowerBlue: '#667EEA',
   silverChalice: '#A6A6A6',
+  governorBay: '#374ABE',
+  grey: '#919191',
+  wildSand: '#F6F6F6',
 };

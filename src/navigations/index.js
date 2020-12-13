@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 import {variables} from '../utils';
-import {Loading, Login, Home, Verify, Dashboard} from '../screens';
+import {Loading, Login, Home, Verify, Dashboard, Checkout} from '../screens';
 const Stack = createStackNavigator();
 const headerOption = {
   gestureEnabled: false,
@@ -34,6 +34,11 @@ function RootNavigator() {
       <Stack.Screen
         name={variables.dashboardScreen}
         component={Dashboard}
+        options={headerOption}
+      />
+      <Stack.Screen
+        name={variables.checkoutScreen}
+        component={Checkout}
         options={headerOption}
       />
     </Stack.Navigator>

@@ -17,11 +17,12 @@ import {variables} from '../utils';
 import {useSelector, useDispatch} from 'react-redux';
 import {addToCart} from '../store/actions/carts';
 
-const Dashboard = () => {
+const Dashboard = (props) => {
   const dispatch = useDispatch();
   const cartState = useSelector((state) => state.carts.carts);
   const handleProductSelect = async (item) => {
     await dispatch(addToCart(item));
+    props.navigation.navigate(variables.checkoutScreen);
   };
   const renderCategoryItem = ({item}) => {
     return (

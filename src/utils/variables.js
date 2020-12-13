@@ -15,4 +15,5 @@ export default {
   categories: 'Categories',
   featured: 'Featured',
   bestSell: 'Best Sell',
+  checkoutScreen: 'Checkout',
 };
